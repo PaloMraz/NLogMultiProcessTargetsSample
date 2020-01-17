@@ -30,6 +30,10 @@ namespace LogConsoleRunner
         logger.Log($"Message from {currentProcess.ProcessName}#{currentProcess.Id} at {DateTimeOffset.Now:O}");
         await Task.Delay(DelayBetweenLogWrites);
       }
+
+      // Suggested by the first answer to https://stackoverflow.com/questions/59773319/nlog-does-not-flush-all-log-entries-upon-process-exit
+      // But does not help either :-(
+      NLog.LogManager.Shutdown();
     }
   }
 }
