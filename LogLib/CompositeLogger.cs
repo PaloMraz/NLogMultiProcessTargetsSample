@@ -15,7 +15,9 @@ namespace LogLib
       var fileTarget = new FileTarget("file")
       {
         FileName = logFilePath,
-        AutoFlush = true
+        AutoFlush = true,
+        KeepFileOpen = true,
+        ConcurrentWrites = true
       };
       var asyncTargetWrapper = new AsyncTargetWrapper("async", fileTarget)
       {
